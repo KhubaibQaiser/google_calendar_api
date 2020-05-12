@@ -1,5 +1,9 @@
-import {CalendarEvent} from '../../entities/GoogleCalendar/CalendarEvent';
+import {CalendarEventItem} from '../../entities/GoogleCalendar/CalendarEventItem';
 
 export interface GoogleCalendarRepository {
-  GetPublicHolidays(language: string, country: string): Promise<CalendarEvent>;
+  GetPublicHolidays(
+    language: string,
+    country: string,
+    year?: number,
+  ): Promise<CalendarEventItem[]>;
 }

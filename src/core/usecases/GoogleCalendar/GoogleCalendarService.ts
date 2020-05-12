@@ -1,8 +1,11 @@
-import {CalendarEvent} from 'src/core/data/entities/GoogleCalendar/CalendarEvent';
 import {GoogleCalendarRepository} from 'src/core/data/repositories/GoogleCalendar/GoogleCalendarRepository';
+import {CalendarEventItem} from 'src/core/data/entities/GoogleCalendar/CalendarEventItem';
 
 export interface GoogleCalendarService {
-  GetPublicHolidays(language: string, country: string): Promise<CalendarEvent>;
+  GetPublicHolidays(
+    language: string,
+    country: string,
+  ): Promise<CalendarEventItem[]>;
 }
 
 export class GoogleCalendarServiceImpl implements GoogleCalendarService {
@@ -15,7 +18,8 @@ export class GoogleCalendarServiceImpl implements GoogleCalendarService {
   async GetPublicHolidays(
     language: string,
     country: string,
-  ): Promise<CalendarEvent> {
-    return this.calendarRepo.GetPublicHolidays(language, country);
+    year?: number,
+  ): Promise<CalendarEventItem[]> {
+    return this.calendarRepo.GetPublicHolidays(language, country, year);
   }
 }

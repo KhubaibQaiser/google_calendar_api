@@ -4,13 +4,13 @@ export class CalendarEventItem {
   id: string;
   status: string;
   htmlLink: string;
-  created: string;
-  updated: string;
+  created: Date;
+  updated: Date;
   summary: string;
   creator: Creator;
   organizer: Creator;
-  start: Date;
-  end: Date;
+  start: HolidayDate;
+  end: HolidayDate;
   transparency: string;
   visibility: string;
   iCalUID: string;
@@ -22,13 +22,13 @@ export class CalendarEventItem {
     id: string,
     status: string,
     htmlLink: string,
-    created: string,
-    updated: string,
+    created: Date,
+    updated: Date,
     summary: string,
     creator: Creator,
     organizer: Creator,
-    start: Date,
-    end: Date,
+    start: HolidayDate,
+    end: HolidayDate,
     transparency: string,
     visibility: string,
     iCalUID: string,
@@ -50,6 +50,14 @@ export class CalendarEventItem {
     this.visibility = visibility;
     this.iCalUID = iCalUID;
     this.sequence = sequence;
+  }
+}
+
+class HolidayDate {
+  date: string;
+
+  constructor(date: string) {
+    this.date = date;
   }
 }
 

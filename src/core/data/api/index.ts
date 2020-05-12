@@ -11,6 +11,15 @@ export const googleCalendarAxios = axios.create({
 });
 
 googleCalendarAxios.interceptors.request.use((request) => {
+  if (request.params === undefined) {
+    request.params = {};
+  }
   request.params.key = GOOGLE_CALENDAR_API_KEY;
+  console.log('request', request);
   return request;
+});
+
+googleCalendarAxios.interceptors.response.use((response) => {
+  console.log('response', response);
+  return response;
 });
