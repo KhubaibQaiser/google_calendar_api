@@ -5,10 +5,15 @@ import {
   ScrollView,
   View,
   Text,
+  Button,
   StatusBar,
 } from 'react-native';
 
 const App = () => {
+  const onGetHolidays = () => {
+    console.log('Get Holidays');
+  };
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -18,6 +23,7 @@ const App = () => {
           style={styles.scrollView}>
           <View>
             <Text>Hello World</Text>
+            <Button title="Get Holidays" onPress={onGetHolidays} />
           </View>
         </ScrollView>
       </SafeAreaView>
