@@ -7,7 +7,7 @@ import {
 
 export const googleCalendarAxios = axios.create({
   baseURL: GOOGLE_CALENDAR_BASE_URL,
-  timeout: REQUEST_TIMEOUT,
+  timeout: parseInt(REQUEST_TIMEOUT, 10),
 });
 
 googleCalendarAxios.interceptors.request.use((request) => {

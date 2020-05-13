@@ -17,18 +17,16 @@ const App = () => {
   const [holidays, setHolidays] = useState<CalendarEventItem[]>([]);
 
   const onGetHolidays = async () => {
-    console.log('Get Holidays');
     const googleCalendarRepo = new GoogleCalendarRepositoryImpl();
     const googleCalendarService = new GoogleCalendarServiceImpl(
       googleCalendarRepo,
     );
-    const holidays = await googleCalendarService.GetPublicHolidays(
+    const holidaysResponse = await googleCalendarService.GetPublicHolidays(
       'en',
       'pk',
       2020,
     );
-    console.log('Holidays', holidays);
-    setHolidays(holidays);
+    setHolidays(holidaysResponse);
   };
 
   return (
