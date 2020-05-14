@@ -1,5 +1,5 @@
 import {Navigation} from 'react-native-navigation';
-import {registerScreens} from './src/app/screens/screens';
+import {NavigationMap, registerScreens} from './src/app/screens/navigation';
 
 registerScreens();
 
@@ -10,14 +10,7 @@ Navigation.events().registerAppLaunchedListener(async () => {
         children: [
           {
             component: {
-              name: 'Home',
-              options: {
-                topBar: {
-                  title: {
-                    text: 'Home',
-                  },
-                },
-              },
+              name: NavigationMap.Home.name,
             },
           },
         ],

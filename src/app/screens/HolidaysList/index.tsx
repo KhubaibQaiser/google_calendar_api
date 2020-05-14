@@ -1,20 +1,17 @@
-import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  Text,
-  StatusBar,
-  FlatList,
-} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {SafeAreaView, StatusBar, FlatList} from 'react-native';
+import {Navigation} from 'react-native-navigation';
 
 import GoogleCalendarRepositoryImpl from '../../../core/infrastructure/GoogleCalendar/GoogleCalendarRepositoryImpl';
 import {CalendarEventItem} from '../../../core/data/entities/GoogleCalendar/CalendarEventItem';
 import {GoogleCalendarServiceImpl} from '../../../core/usecases/GoogleCalendar/GoogleCalendarService';
-import ButtonPrimary from '../../../app/components/Buttons/ButtonPrimary';
+import {NavigationMap} from '../navigation';
+import HolidayListItem from './components/HolidayListItem';
+import EmptyListMessage from './components/EmptyListMessage';
 
 import styles from './styles';
 
-export const HolidaysList = () => {
+export const HolidaysList = (props: {componentId: string}) => {
   const [holidays, setHolidays] = useState<CalendarEventItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -33,37 +30,33 @@ export const HolidaysList = () => {
     setHolidays(holidaysResponse);
   };
 
+  useEffect(() => {
+    Navigation.mergeOptions(props.componentId, {
+      ...NavigationMap.HolidaysList.options,
+    });
+    onGetHolidays();
+  }, [props.componentId]);
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={styles.safeAreaView}>
-        {holidays.length === 0 ? (
-          <ButtonPrimary
-            title="Get Holidays"
-            onPress={onGetHolidays}
-            isLoading={isLoading}
-          />
-        ) : (
-          <FlatList
-            data={holidays}
-            renderItem={({item}) => (
-              <Text key={item.id}>
-                {item.start.date} - {item.summary}
-              </Text>
-            )}
-            refreshing={isLoading}
-            onRefresh={() => onGetHolidays()}
-          />
-        )}
+        <FlatList
+          data={holidays}
+          renderItem={({item}) => (
+            <HolidayListItem
+              key={item.id}
+              holidayDate={item.start.date}
+              holidayName={item.summary}
+            />
+          )}
+          ListEmptyComponent={<EmptyListMessage />}
+          refreshing={isLoading}
+          onRefresh={() => onGetHolidays()}
+          style={styles.holidaysList}
+          contentContainerStyle={styles.holidaysListContentContainer}
+        />
       </SafeAreaView>
     </>
   );
-};
-
-HolidaysList.options = {
-  topBar: {
-    title: {
-      text: 'Holidays List',
-    },
-  },
 };

@@ -12,10 +12,11 @@ export default (props: {
   title: string;
   isLoading?: boolean;
   onPress: (event: GestureResponderEvent) => void;
+  style?: any;
 }) => {
   return (
     <TouchableHighlight onPress={props.onPress} disabled={props.isLoading}>
-      <View style={styles.container}>
+      <View style={{...styles.container, ...props.style}}>
         {props.isLoading ? (
           <ActivityIndicator color="white" />
         ) : (
