@@ -1,5 +1,8 @@
 A sample project to demonstrate how to consume [Google Calendar REST API](https://developers.google.com/calendar/v3/reference) in React Native using the Clean Architecutre.
 
+# How to run?
+* Just run `npm install` to install the dependencies and then run it on your device/emulator using `npx react-native run-android`.
+
 # Dependencies:
 * [React Native](https://reactnative.dev/)
 * [React Native Navigation](https://github.com/wix/react-native-navigation)
