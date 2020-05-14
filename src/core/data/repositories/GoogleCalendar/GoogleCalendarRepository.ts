@@ -1,7 +1,7 @@
 import {CalendarEventItem} from '../../entities/GoogleCalendar/CalendarEventItem';
 
 export interface GoogleCalendarRepository {
-  GetPublicHolidays(
+  getPublicHolidays(
     language: string,
     country: string,
     year?: number,

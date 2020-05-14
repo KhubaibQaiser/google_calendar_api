@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {SafeAreaView, StatusBar, FlatList} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 
-import GoogleCalendarRepositoryImpl from '../../../core/infrastructure/GoogleCalendar/GoogleCalendarRepositoryImpl';
 import {CalendarEventItem} from '../../../core/data/entities/GoogleCalendar/CalendarEventItem';
 import {GoogleCalendarServiceImpl} from '../../../core/usecases/GoogleCalendar/GoogleCalendarService';
 import {NavigationMap} from '../navigation';
@@ -17,11 +16,7 @@ export const HolidaysList = (props: {componentId: string}) => {
 
   const onGetHolidays = async () => {
     setIsLoading(true);
-    const googleCalendarRepo = new GoogleCalendarRepositoryImpl();
-    const googleCalendarService = new GoogleCalendarServiceImpl(
-      googleCalendarRepo,
-    );
-    const holidaysResponse = await googleCalendarService.GetPublicHolidays(
+    const holidaysResponse = await GoogleCalendarServiceImpl.getInstance().getPublicHolidays(
       'en',
       'pk',
       2020,
@@ -39,7 +34,6 @@ export const HolidaysList = (props: {componentId: string}) => {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" />
       <SafeAreaView style={styles.safeAreaView}>
         <FlatList
           data={holidays}
