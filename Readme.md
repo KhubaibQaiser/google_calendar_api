@@ -13,6 +13,8 @@ A sample project to demonstrate how to consume [Google Calendar REST API](https:
 * [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) - with some improvements
 
 # Features:
+* Implementation of the clean architecture, with some improvements that makes the code highly scalable for both online-first & offline-first approach.
+* Screen navigation implemented using [React Native Navigation](https://github.com/wix/react-native-navigation).
 * Fetch public holidays from **Google Calendar REST API**.
 * Show the holidays list [FlatList](https://reactnative.dev/docs/flatlist) component.
 * A sample custom **Button** component with [Activity Indicator](https://reactnative.dev/docs/activityindicator) to show progress during loading.
