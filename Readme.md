@@ -1,5 +1,10 @@
 A sample project to demonstrate how to consume [Google Calendar REST API](https://developers.google.com/calendar/v3/reference) in React Native using the Clean Architecutre.
 
+# Screen-shots:
+<img src="https://github.com/khubaib-qaiser-dev/google-calendar-api/blob/master/ss/Screenshot_20200515-134941.png" alt="Home Screen" width="40%"/>
+<img src="https://github.com/khubaib-qaiser-dev/google-calendar-api/blob/master/ss/Screenshot_20200515-134947.png" alt="Holidays List Screen - Loading" width="40%"/>
+<img src="https://github.com/khubaib-qaiser-dev/google-calendar-api/blob/master/ss/Screenshot_20200515-134951.png" alt="Holidays List Screen" width="40%"/>
+
 # How to run?
 * Just run `npm install` to install the dependencies and then run it on your device/emulator using `npx react-native run-android`.
 
