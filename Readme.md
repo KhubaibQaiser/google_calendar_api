@@ -21,4 +21,5 @@ A sample project to demonstrate how to consume [Google Calendar REST API](https:
 * Add error handling for API failure
 * Integrate Redux - if needed
 * Integrate Unit testing using [Jest](https://jestjs.io/docs/en/tutorial-react-native)
+* Configure path aliases/absolute paths
 
