@@ -6,7 +6,14 @@ A sample project to demonstrate how to consume [Google Calendar REST API](https:
 <img src="https://github.com/khubaib-qaiser-dev/google-calendar-api/blob/master/ss/Screenshot_20200515-134951.png" alt="Holidays List Screen" width="40%"/>
 
 # How to run?
-* Just run `npm install` to install the dependencies and then run it on your device/emulator using `npx react-native run-android`.
+* Create a `.env` file in the root directory.
+* Add following configurations to it:
+  ```
+  REQUEST_TIMEOUT=10000
+  GOOGLE_CALENDAR_BASE_URL=https://www.googleapis.com/calendar/v3/
+  GOOGLE_CALENDAR_API_KEY=YOUR_API_KEY
+  ```
+* Run `npm install` to install the dependencies and then run it on your device/emulator using `npx react-native run-android`.
 
 # Dependencies:
 * [React Native](https://reactnative.dev/)
